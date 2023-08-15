@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'sites',
+    'py',
     
 ]
 
@@ -55,7 +57,7 @@ ROOT_URLCONF = 'tachikumo.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ BASE_DIR / 'sites/templates' ],
+        'DIRS': [ BASE_DIR / '/sites/templates/' ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

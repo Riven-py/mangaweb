@@ -12,12 +12,7 @@
         <div class="navbar-right">
             <ul>
                 <!--These logos are taken from Tachiyomi, I just like their aesthetic and modeling it like theirs-->
-                <li><img style="width: 50px; height:50px;" src="{%static 'resources/logo.png'%}"></li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
+                <li><a href="/"><img style="width: 50px; height:50px;" src="{%static 'resources/logo.png'%}"></a></li>
             </ul>
             <ul>
                 <li>1</li>
@@ -25,18 +20,20 @@
             </ul>
         </div>
         <div class="greeting-header">
-            <h1>  
-                Good Evening
+            <h1>
+                Latest Releases
             </h1>
+            <div class="title-container">
+                {% for title, cover, url in series_data %}
+                <div class="series-handler">
+                    <a href="{% url 'titlepage' %}?url={{ url }}&title={{ title|urlencode }}&cover={{ cover|urlencode }}">
+                        <img class="cover-image" src="{{ cover }}">
+                        <h3>{{ title }}</h3>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
         </div>
-
-        <div class="continue-header">
-            <h1>  
-                Continue Reading
-            </h1>
-        </div>
-        
-
     </div>
 </body>
 </html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {%load static%}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{%static 'title.css'%}" >
+    <title>{{title}}</title>
+</head>
+<body>
+    <div class="main-grid">
+        <div class="navbar-right">
+            <ul>
+                <!--These logos are taken from Tachiyomi, I just like their aesthetic and modeling it like theirs-->
+                <li><a href="/"><img style="width: 50px; height:50px;" src="{%static 'resources/logo.png'%}"></a></li>
+            </ul>
+            <ul>
+                <li>1</li>
+                <li>2</li>
+            </ul>
+        </div>
+        <div class="info">
+            <img class="cover-image" src="{{cover}}">
+            <div class="container-info">
+                {%for label in values%}
+                    <p>
+                        {{label}}
+                    </p>
+                {%endfor%}
+            </div>
+        </div>
+        
+        <div class="title">
+            <h1>{{title|upper}}</h1>
+            <div class="chapter-list">
+                {% for chapter_name, chapter_data in chapters_dict.items %}
+                <a href="{{ chapter_data.link }}" class="link">
+                <div class="chapter-container">
+                    <p style="color: gray;">{{ chapter_name }}</p>
+                    <p class="dateof">Chapter Date: {{ chapter_data.date }}</p>
+                </div>
+                </a>
+                {% endfor %}
+            </div>            
+        </div>
+
+    </div>
+</body>
+</html>
